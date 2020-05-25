@@ -1,8 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import User from './components/User';
 
 class App extends React.Component {
+
+
+
+
+
   render() {
   return (
     <div className="App ui container">
@@ -18,10 +24,7 @@ class App extends React.Component {
   </thead>
   <tbody>
     <tr>
-      <td>1</td>
-      <td>Jamie</td>
-      <td>1000</td>
-      <td>0</td>
+      <td><User/></td>
     </tr>
     <tr>
       <td>2</td>
