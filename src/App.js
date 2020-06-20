@@ -1,54 +1,61 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
 import User from './components/User';
+import FormDataComponent from './components/Form-data';
 
-class App extends React.Component {
+//console.log(storedValue);
 
+const TrUser = props => {
+  const user = props.user;
+  console.log(props);
+  return (
+    <tr>
+      <td>{props.index}</td>
+      <User username={user.username} rank={user.rank} points={user.points} />
+    </tr>
+  )
+}
 
+const App = props => {
 
+  const [users, setUsers] = useState([
+    {username: "John", rank: 1, points: 0},
+    {username: "David", rank: 1, points: 0},
+    {username: "David", rank: 1, points: 0}
+  ]);
 
+  const addUser = user => {
+    console.log("App.printUser", user)
+    setUsers(state => {
+      return [...state,user]
+    })
+  }
 
-  render() {
+  
+  //handleFormSubmit = () => {};
+  //window.localStorage.setItem('users', 'Tom');
+  //if (localStorage.getItem('users')) { users = JSON.parse(window.localStorage.getItem('users')) }
+
   return (
     <div className="App ui container">
+      <FormDataComponent onUserAdd={addUser}/>
+
       <h3>Current standings</h3>
-      <table class="ui celled table">
-  <thead>
-    <tr>
-      <th>Number</th>
-      <th>Name</th>
-      <th>Ranking</th>
-      <th>Points</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><User/></td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>John</td>
-      <td>1000</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Janice</td>
-      <td>1000</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>Ian</td>
-      <td>1000</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
+      <table className="ui celled table">
+        <thead>
+          <tr>
+            <th>Number</th>
+            <th>Name</th>
+            <th>Ranking</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user, index) => <TrUser key={index} index={index} user={user} />)}
+        </tbody>
+      </table>
     </div>
-    );
-  }
+  );
 }
 
 export default App;
