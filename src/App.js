@@ -19,9 +19,7 @@ const TrUser = props => {
 const App = props => {
 
   const [users, setUsers] = useState([
-    {username: "John", rank: 1, points: 0},
-    {username: "David", rank: 1, points: 0},
-    {username: "David", rank: 1, points: 0}
+
   ]);
 
   const addUser = user => {

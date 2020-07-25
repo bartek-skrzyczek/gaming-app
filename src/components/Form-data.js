@@ -5,7 +5,7 @@ export default props => {
     const onSubmit = (e) => {
         e.preventDefault();
         const newUser = {
-            fullname: document.getElementById('fullname').value,
+            username: document.getElementById('username').value,
             rank: document.getElementById('rank').value
         }
         console.log("User data:", newUser);
@@ -15,7 +15,7 @@ export default props => {
         <form onSubmit={onSubmit}>
             <label>
                 Username:
-  <input id="fullname" type="text" />
+  <input id="username" type="text" />
             </label>
             <label>
                 Rank:
